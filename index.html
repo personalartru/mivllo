@@ -130,7 +130,7 @@
 
         .characters-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            grid-template-columns: repeat(2, 1fr); /* Ровно 2 колонки на десктопе (2 ряда по 2 карточки) */
             gap: 2.5rem; 
         }
 
@@ -180,7 +180,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top; /* Гарантирует, что глаза персонажа всегда в кадре */
+            object-position: center top;
             border-radius: 50%;
             display: block;
             animation: float-character 4s ease-in-out infinite;
@@ -211,7 +211,37 @@
 
         /* Footer */
         .footer { text-align: center; padding: 3rem 2rem; color: var(--text-light); font-size: 0.9rem; }
-        .social-links { margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; }
+        
+        .contact-email {
+            color: #B19CD9;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .contact-email:hover { color: #FF9EBB; }
+
+        .licenses {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 1.5rem;
+            border-radius: 15px;
+        }
+        .licenses ul {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .licenses li {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1.5rem; }
         .social-links a { color: #B19CD9; text-decoration: none; font-weight: 600; transition: color 0.3s; }
         .social-links a:hover { color: #FF9EBB; }
 
@@ -223,8 +253,26 @@
         @media (max-width: 768px) { 
             .logo { font-size: 2.5rem; } 
             .tagline { font-size: 1rem; } 
-            .characters-grid { grid-template-columns: 1fr; }
-            .hero-image { margin: 1rem auto 0; }
+            
+            /* 1. Блок с имиджем на всю ширину и убран лишний отступ */
+            .hero {
+                min-height: auto;
+                padding: 1rem 0 0 0;
+            }
+            .hero-image {
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 0; /* Убираем скругление для эффекта "от края до края" */
+            }
+            .characters-section {
+                padding-top: 1.5rem; /* Минимальный отступ перед заголовком Meet the Characters */
+            }
+            
+            .characters-grid { 
+                grid-template-columns: 1fr; /* 1 колонка на мобильных */
+                gap: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -256,7 +304,6 @@
             <!-- Mivllo -->
             <div class="character-card fade-in" style="--card-color: #FFD1DC; --glow-color: rgba(255, 209, 220, 0.6);">
                 <div class="avatar-placeholder">
-                    <!-- Если ваш файл называется mivillo_site.png (с буквой i), измените название ниже -->
                     <img src="mivllo_site.png" alt="Mivllo - fluffy pink and lavender kitten" class="character-img">
                 </div>
                 <h3>Mivllo</h3>
@@ -299,11 +346,23 @@
 
     <!-- Footer -->
     <footer class="footer fade-in">
-        <p>© 2026 Mivllo & Friends. Created with love for the little ones.</p>
+        <p>© 2026 Mivllo & Friends. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">Contact: <a href="mailto:mivllofriends@gmail.com" class="contact-email">mivllofriends@gmail.com</a></p>
+        
+        <!-- Блок с лицензиями -->
+        <div class="licenses">
+            <p><strong>Licenses & Attributions:</strong></p>
+            <ul>
+                <li><strong>Fonts:</strong> "Fredoka" and "Nunito" are licensed under the SIL Open Font License, Version 1.1 (via Google Fonts).</li>
+                <li><strong>Images & Characters:</strong> All character designs, illustrations, and images are proprietary and © 2026 Mivllo & Friends. All rights reserved.</li>
+                <li><strong>Videos:</strong> All video content is original and © 2026 Mivllo & Friends. All rights reserved.</li>
+            </ul>
+        </div>
+
         <div class="social-links">
-            <a href="https://www.youtube.com/@Mivllo">YouTube</a>
-            <a href="https://l.likee.video/p/n5TWor">TikTok</a>
-            <a href="https://github.com/personalartru/mivllo">GitHub</a>
+            <a href="https://www.youtube.com/@Mivllo" target="_blank">YouTube</a>
+            <a href="https://l.likee.video/p/n5TWor" target="_blank">TikTok</a>
+            <a href="https://github.com/personalartru/mivllo" target="_blank">GitHub</a>
         </div>
     </footer>
 
