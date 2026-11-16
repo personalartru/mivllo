@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mivllo & Friends | A Magical World for Toddlers</title>
+    <meta name="description" content="Join Mivllo and friends in a magical world of music, games, and fluffy adventures for toddlers aged 1 to 5.">
+    
+    <!-- Подключение шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-cream: #FFFDD0;
@@ -15,7 +19,9 @@
             --font-heading: 'Fredoka', sans-serif;
             --font-body: 'Nunito', sans-serif;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             background-color: var(--bg-cream);
             color: var(--text-dark);
@@ -24,14 +30,21 @@
             overflow-x: hidden;
             position: relative;
         }
+
+        /* Фоновые декоративные элементы */
         .bg-shape {
             position: fixed; border-radius: 50%; filter: blur(80px);
             z-index: -1; opacity: 0.6; animation: float 10s infinite ease-in-out;
         }
         .shape-1 { width: 400px; height: 400px; background: #E6E6FA; top: -100px; left: -100px; }
         .shape-2 { width: 300px; height: 300px; background: #FFD1DC; bottom: 10%; right: -50px; animation-delay: 2s; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-        
+
+        @keyframes float { 
+            0%, 100% { transform: translateY(0px); } 
+            50% { transform: translateY(-20px); } 
+        }
+
+        /* Hero Section */
         .hero { 
             min-height: 90vh; 
             display: flex; 
@@ -42,6 +55,7 @@
             padding: 2rem;
             position: relative;
         }
+
         .logo { 
             font-family: var(--font-heading); 
             font-size: 4rem; 
@@ -52,6 +66,7 @@
             z-index: 2;
         }
         .logo .amp { color: #B19CD9; }
+
         .tagline { 
             font-size: 1.25rem; 
             color: var(--text-light); 
@@ -59,6 +74,7 @@
             margin: 0 auto 2rem;
             z-index: 2;
         }
+
         .cta-button {
             display: inline-block; 
             background: linear-gradient(135deg, #FF9EBB 0%, #B19CD9 100%);
@@ -77,12 +93,12 @@
             transform: translateY(-3px); 
             box-shadow: 0 15px 30px rgba(177, 156, 217, 0.6); 
         }
-        
-        /* Стили для изображения в хедере */
+
+        /* Изображение в хедере */
         .hero-image {
             max-width: 900px;
             width: 100%;
-            margin: 2rem auto;
+            margin: 2rem auto 0;
             border-radius: 30px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             overflow: hidden;
@@ -90,26 +106,20 @@
             z-index: 1;
             animation: fadeInUp 1s ease-out;
         }
-        
         .hero-image img {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 30px;
         }
-        
+
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
+
+        /* Characters Section */
         .characters-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        
         .section-title { 
             font-family: var(--font-heading); 
             font-size: 2.5rem; 
@@ -117,11 +127,13 @@
             color: var(--text-dark); 
             margin-bottom: 3rem; 
         }
+
         .characters-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
-            gap: 2rem; 
+            gap: 2.5rem; 
         }
+
         .character-card {
             background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(10px); 
@@ -136,29 +148,56 @@
             transform: translateY(-10px); 
             box-shadow: 0 20px 40px var(--glow-color); 
         }
+
+        /* Стили для аватарок персонажей */
         .avatar-placeholder {
-            width: 120px; 
-            height: 120px; 
-            border-radius: 50%; 
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
             margin: 0 auto 1.5rem;
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
             background: linear-gradient(135deg, var(--card-color), white);
-            box-shadow: inset 0 0 20px rgba(255,255,255,0.8), 0 10px 20px var(--glow-color);
+            box-shadow: 
+                inset 0 0 20px rgba(255, 255, 255, 0.8),
+                0 10px 25px var(--glow-color),
+                0 0 40px rgba(255, 255, 255, 0.4);
+            position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .magic-icon { 
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)); 
-            animation: pulse 2s infinite ease-in-out; 
+
+        .character-card:hover .avatar-placeholder {
+            transform: scale(1.05);
+            box-shadow: 
+                inset 0 0 20px rgba(255, 255, 255, 0.8),
+                0 15px 35px var(--glow-color),
+                0 0 60px rgba(255, 255, 255, 0.6);
         }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+        .character-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top; /* Гарантирует, что глаза персонажа всегда в кадре */
+            border-radius: 50%;
+            display: block;
+            animation: float-character 4s ease-in-out infinite;
+        }
+
+        @keyframes float-character {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
         .character-card h3 { 
             font-family: var(--font-heading); 
             font-size: 1.5rem; 
             color: var(--text-dark); 
             margin-bottom: 0.25rem; 
         }
+
         .role { 
             font-weight: 700; 
             filter: brightness(0.85); 
@@ -167,93 +206,119 @@
             font-size: 0.85rem; 
             letter-spacing: 1px; 
         }
+
         .desc { font-size: 0.95rem; color: var(--text-light); }
-        
+
+        /* Footer */
         .footer { text-align: center; padding: 3rem 2rem; color: var(--text-light); font-size: 0.9rem; }
         .social-links { margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; }
         .social-links a { color: #B19CD9; text-decoration: none; font-weight: 600; transition: color 0.3s; }
         .social-links a:hover { color: #FF9EBB; }
-        
+
+        /* Анимация появления при скролле */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Адаптивность */
         @media (max-width: 768px) { 
             .logo { font-size: 2.5rem; } 
             .tagline { font-size: 1rem; } 
             .characters-grid { grid-template-columns: 1fr; }
-            .hero-image { margin: 1rem auto; }
+            .hero-image { margin: 1rem auto 0; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Фоновые элементы -->
     <div class="bg-shape shape-1"></div>
     <div class="bg-shape shape-2"></div>
 
+    <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content fade-in">
             <h1 class="logo">Mivllo <span class="amp">&</span> Friends</h1>
             <p class="tagline">A magical world of music, games, and fluffy adventures for toddlers aged 1 to 5.</p>
-            <a href="https://www.youtube.com/@Mivllo" target="_blank" class="cta-button">Watch on YouTube ▶</a>
+            <a href="https://youtube.com" target="_blank" class="cta-button">Watch on YouTube ▶</a>
         </div>
         
-        <!-- Изображение с персонажами -->
+        <!-- Главное изображение с персонажами -->
         <div class="hero-image fade-in">
             <img src="header-image.jpg" alt="Mivllo and Friends in a magical forest">
         </div>
     </header>
 
+    <!-- Characters Section -->
     <main class="characters-section">
         <h2 class="section-title fade-in">Meet the Characters</h2>
         <div class="characters-grid">
+            
             <!-- Mivllo -->
             <div class="character-card fade-in" style="--card-color: #FFD1DC; --glow-color: rgba(255, 209, 220, 0.6);">
-                <div class="avatar-placeholder"><span class="magic-icon">🎵</span></div>
+                <div class="avatar-placeholder">
+                    <!-- Если ваш файл называется mivillo_site.png (с буквой i), измените название ниже -->
+                    <img src="mivllo_site.png" alt="Mivllo - fluffy pink and lavender kitten" class="character-img">
+                </div>
                 <h3>Mivllo</h3>
                 <p class="role" style="color: #FF9EBB;">Music & Rhythm</p>
                 <p class="desc">The fluffiest pink-and-lavender kitten. Loves to sing, and his tummy glows with a magical musical note.</p>
             </div>
-            
+
             <!-- Pip -->
             <div class="character-card fade-in" style="--card-color: #98FF98; --glow-color: rgba(152, 255, 152, 0.6);">
-                <div class="avatar-placeholder"><span class="magic-icon">🍃</span></div>
+                <div class="avatar-placeholder">
+                    <img src="pip_site.png" alt="Pip - mint green bird" class="character-img">
+                </div>
                 <h3>Pip</h3>
                 <p class="role" style="color: #50C878;">Nature & Voice</p>
                 <p class="desc">A tiny mint-green bird with soft, dandelion-like feathers. Teaches toddlers nature sounds and new words.</p>
             </div>
-            
+
             <!-- Piko -->
             <div class="character-card fade-in" style="--card-color: #FFDAB9; --glow-color: rgba(255, 218, 185, 0.6);">
-                <div class="avatar-placeholder"><span class="magic-icon">⭐</span></div>
+                <div class="avatar-placeholder">
+                    <img src="piko_site.png" alt="Piko - peach fluffy hedgehog" class="character-img">
+                </div>
                 <h3>Piko</h3>
                 <p class="role" style="color: #FFB347;">Bedtime Stories</p>
                 <p class="desc">A peach-colored fluffy hedgehog without spikes. The keeper of cozy bedtime stories with a glowing star on his tummy.</p>
             </div>
-            
+
             <!-- Bubu -->
             <div class="character-card fade-in" style="--card-color: #89CFF0; --glow-color: rgba(137, 207, 240, 0.6);">
-                <div class="avatar-placeholder"><span class="magic-icon">🫧</span></div>
+                <div class="avatar-placeholder">
+                    <img src="bubu_site.png" alt="Bubu - sky blue bunny" class="character-img">
+                </div>
                 <h3>Bubu</h3>
                 <p class="role" style="color: #4A90E2;">Games & Fun</p>
                 <p class="desc">A sky-blue bunny with long, soft ears. Loves hide-and-seek, jumping, and learning colors with little ones.</p>
             </div>
+
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="footer fade-in">
         <p>© 2026 Mivllo & Friends. Created with love for the little ones.</p>
         <div class="social-links">
-            <a href="https://www.youtube.com/@Mivllo">YouTube</a>
+            <a href="#">YouTube</a>
             <a href="#">Telegram</a>
             <a href="https://github.com/personalartru/mivllo">GitHub</a>
         </div>
     </footer>
 
+    <!-- Скрипт для анимации появления при скролле -->
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
         }, { threshold: 0.1 });
+
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
+
 </body>
 </html>
