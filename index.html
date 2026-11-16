@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mivllo & Friends | A Magical World for Toddlers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FFFDD0;
+            --text-dark: #4A4A4A;
+            --text-light: #7A7A7A;
+            --font-heading: 'Fredoka', sans-serif;
+            --font-body: 'Nunito', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .bg-shape {
+            position: fixed; border-radius: 50%; filter: blur(80px);
+            z-index: -1; opacity: 0.6; animation: float 10s infinite ease-in-out;
+        }
+        .shape-1 { width: 400px; height: 400px; background: #E6E6FA; top: -100px; left: -100px; }
+        .shape-2 { width: 300px; height: 300px; background: #FFD1DC; bottom: 10%; right: -50px; animation-delay: 2s; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        
+        .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+        .logo { font-family: var(--font-heading); font-size: 4rem; font-weight: 700; color: #FF9EBB; text-shadow: 2px 4px 10px rgba(255, 158, 187, 0.3); margin-bottom: 1rem; }
+        .logo .amp { color: #B19CD9; }
+        .tagline { font-size: 1.25rem; color: var(--text-light); max-width: 600px; margin: 0 auto 2rem; }
+        .cta-button {
+            display: inline-block; background: linear-gradient(135deg, #FF9EBB 0%, #B19CD9 100%);
+            color: white; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none;
+            font-family: var(--font-heading); font-weight: 600; font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(177, 156, 217, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(177, 156, 217, 0.6); }
+        
+        .characters-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-family: var(--font-heading); font-size: 2.5rem; text-align: center; color: var(--text-dark); margin-bottom: 3rem; }
+        .characters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .character-card {
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 30px;
+            padding: 2rem; text-align: center; border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .character-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px var(--glow-color); }
+        .avatar-placeholder {
+            width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1.5rem;
+            display: flex; align-items: center; justify-content: center; font-size: 3rem;
+            background: linear-gradient(135deg, var(--card-color), white);
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.8), 0 10px 20px var(--glow-color);
+        }
+        .magic-icon { filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)); animation: pulse 2s infinite ease-in-out; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .character-card h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--text-dark); margin-bottom: 0.25rem; }
+        .role { font-weight: 700; filter: brightness(0.85); margin-bottom: 1rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .desc { font-size: 0.95rem; color: var(--text-light); }
+        
+        .footer { text-align: center; padding: 3rem 2rem; color: var(--text-light); font-size: 0.9rem; }
+        .social-links { margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; }
+        .social-links a { color: #B19CD9; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .social-links a:hover { color: #FF9EBB; }
+        
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) { .logo { font-size: 2.5rem; } .tagline { font-size: 1rem; } .characters-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <header class="hero">
+        <div class="hero-content fade-in">
+            <h1 class="logo">Mivllo <span class="amp">&</span> Friends</h1>
+            <p class="tagline">A magical world of music, games, and fluffy adventures for toddlers aged 1 to 5.</p>
+            <a href="https://youtube.com" target="_blank" class="cta-button">Watch on YouTube ▶</a>
+        </div>
+    </header>
+
+    <main class="characters-section">
+        <h2 class="section-title fade-in">Meet the Characters</h2>
+        <div class="characters-grid">
+            <!-- Mivllo -->
+            <div class="character-card fade-in" style="--card-color: #FFD1DC; --glow-color: rgba(255, 209, 220, 0.6);">
+                <div class="avatar-placeholder"><span class="magic-icon">🎵</span></div>
+                <h3>Mivllo</h3>
+                <p class="role" style="color: #FF9EBB;">Music & Rhythm</p>
+                <p class="desc">The fluffiest pink-and-lavender kitten. Loves to sing, and his tummy glows with a magical musical note.</p>
+            </div>
+            
+            <!-- Pip -->
+            <div class="character-card fade-in" style="--card-color: #98FF98; --glow-color: rgba(152, 255, 152, 0.6);">
+                <div class="avatar-placeholder"><span class="magic-icon">🍃</span></div>
+                <h3>Pip</h3>
+                <p class="role" style="color: #50C878;">Nature & Voice</p>
+                <p class="desc">A tiny mint-green bird with soft, dandelion-like feathers. Teaches toddlers nature sounds and new words.</p>
+            </div>
+            
+            <!-- Piko -->
+            <div class="character-card fade-in" style="--card-color: #FFDAB9; --glow-color: rgba(255, 218, 185, 0.6);">
+                <div class="avatar-placeholder"><span class="magic-icon">⭐</span></div>
+                <h3>Piko</h3>
+                <p class="role" style="color: #FFB347;">Bedtime Stories</p>
+                <p class="desc">A peach-colored fluffy hedgehog without spikes. The keeper of cozy bedtime stories with a glowing star on his tummy.</p>
+            </div>
+            
+            <!-- Bubu -->
+            <div class="character-card fade-in" style="--card-color: #89CFF0; --glow-color: rgba(137, 207, 240, 0.6);">
+                <div class="avatar-placeholder"><span class="magic-icon">🫧</span></div>
+                <h3>Bubu</h3>
+                <p class="role" style="color: #4A90E2;">Games & Fun</p>
+                <p class="desc">A sky-blue bunny with long, soft ears. Loves hide-and-seek, jumping, and learning colors with little ones.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer fade-in">
+        <p>© 2026 Mivllo & Friends. Created with love for the little ones.</p>
+        <div class="social-links">
+            <a href="#">YouTube</a>
+            <a href="#">Telegram</a>
+            <a href="https://github.com/personalartru/mivllo">GitHub</a>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
